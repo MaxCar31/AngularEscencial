@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { GifService } from 'src/app/gifs/services/gifs.service';
+import { Gif } from 'src/app/interfaces/gif.interface';
 
 interface MenuOption {
   label: string;
@@ -17,9 +19,10 @@ interface MenuOption {
     RouterLinkActive
   ],
   templateUrl: './gifs-side-menu-options.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+
 })
 export class GifsSideMenuOpiontsComponent {
+  gifService = inject(GifService);
 
   menuOptions: MenuOption[] = [
     {
@@ -35,7 +38,6 @@ export class GifsSideMenuOpiontsComponent {
       router: '/dashboard/search'
     }
   ]
-
 
 
 }
